@@ -9,7 +9,6 @@ export class BodyItem extends Component {
 
         let {name,height,weight,lifeSpan,bredGroup,origin,ImageUrl}=this.props;
 
-    // let {title,description,ImageUrl,itemId}=this.props;
 
     return (  
         <div className="card my-3" style={{width: "18rem"}}>
@@ -24,9 +23,9 @@ export class BodyItem extends Component {
               Life Span: {lifeSpan} <br />
               Origin: {origin}
             </h6>
-            <a href="/" className="btn btn-sm btn-primary">
+            {/* <a href="/" className="btn btn-sm btn-primary">
               Read more
-            </a>
+            </a> */}
           </div>
         </div>
 

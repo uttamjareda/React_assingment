@@ -112,6 +112,16 @@ export class BodyFrame extends Component {
     };
   }
 
+ async componentDidMount() { 
+    let url="https://api.thedogapi.com/v1/breeds?limit=1&page=1&order=Descx-api-key=e68c0c3f-806c-4077-acf2-d66e1f9c3ffd";
+    let data= await fetch(url);
+    let parsedData= await data.json();
+    console.log(parsedData);
+    await this.setState({articles:parsedData.articles})
+  }
+
+
+
   render() {
     return (
       <div className="container my-10 ">
@@ -130,8 +140,6 @@ export class BodyFrame extends Component {
                   bredGroup={element.breed_group}
                   origin={element.origin}
                   ImageUrl={element.image.url}
-                // title={element.name} description={element.life_span}
-                // ImageUrl={element.image.url} itemId="todo"
                 />
               </div>
             );
