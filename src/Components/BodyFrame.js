@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import BodyItem from "./BodyItem";
+import Spinner from "./Spinner";
 
 export class BodyFrame extends Component {
   //   articles = [];
@@ -15,24 +16,28 @@ export class BodyFrame extends Component {
   }
 
   async componentDidMount() {
-    let url = `https://api.thedogapi.com/v1/breeds?limit=12&page=0&order=Asc`;
+    let url = `https://api.thedogapi.com/v1/breeds?limit=${this.props.limit}&page=0&order=Asc`;
+    this.setState({load:true})
     let data = await fetch(url);
     let parsedData = await data.json();
+    this.setState({load:false})
     this.setState({ articles: parsedData });
   }
 
 
-
+//   {this.state.load && <Spinner/>}
 
    handleNextClick = async () => {
     console.log("Next Clicked");
-    let url = `https://api.thedogapi.com/v1/breeds?limit=12&page=${this.state.page+1}&order=Asc`;
+    let url = `https://api.thedogapi.com/v1/breeds?limit=${this.props.limit}&page=${this.state.page+1}&order=Asc`;
+    this.setState({load:true})
     let data = await fetch(url);
     let parsedData = await data.json();
     this.setState(
         {
             page:this.state.page+1,
-            articles: parsedData
+            articles: parsedData,
+            load:false
         }
     )
   };
@@ -42,13 +47,15 @@ export class BodyFrame extends Component {
 
   handlePrevClick = async () => {
     console.log("Prev Clicked");
-    let url = `https://api.thedogapi.com/v1/breeds?limit=12&page=${this.state.page-1}&order=Asc`;
+    let url = `https://api.thedogapi.com/v1/breeds?limit=${this.props.limit}&page=${this.state.page-1}&order=Asc`;
+    this.setState({load:true})
     let data = await fetch(url);
     let parsedData = await data.json();
     this.setState(
         {
             page:this.state.page-1,
-            articles: parsedData
+            articles: parsedData,
+            load:false
         }
     )
   };
@@ -60,10 +67,10 @@ export class BodyFrame extends Component {
   render() {
     return (
       <div className="container my-10 ">
-        <h2>this is a website on dogs</h2>
-
+        <h2 className="text-center my-3">Welcome to WoofWoof</h2>
+        {this.state.load && <Spinner/>}
         <div className="row">
-          {this.state.articles.map((element) => {
+          {!this.state.load && this.state.articles.map((element) => {
             return (
               <div className="col-md-3" key={element.id}>
                 <BodyItem
