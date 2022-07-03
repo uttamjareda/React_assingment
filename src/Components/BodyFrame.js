@@ -28,99 +28,23 @@ export class BodyFrame extends Component {
         url: "https://cdn2.thedogapi.com/images/BJa4kxc4X.jpg",
       },
     },
-    {
-      weight: {
-        imperial: "50 - 60",
-        metric: "23 - 27",
-      },
-      height: {
-        imperial: "25 - 27",
-        metric: "64 - 69",
-      },
-      id: 2,
-      name: "Afghan Hound",
-      country_code: "AG",
-      bred_for: "Coursing and hunting",
-      breed_group: "Hound",
-      life_span: "10 - 13 years",
-      temperament: "Aloof, Clownish, Dignified, Independent, Happy",
-      origin: "Afghanistan, Iran, Pakistan",
-      reference_image_id: "hMyT4CDXR",
-      image: {
-        id: "hMyT4CDXR",
-        width: 606,
-        height: 380,
-        url: "https://cdn2.thedogapi.com/images/hMyT4CDXR.jpg",
-      },
-    },
-    {
-      weight: {
-        imperial: "44 - 66",
-        metric: "20 - 30",
-      },
-      height: {
-        imperial: "30",
-        metric: "76",
-      },
-      id: 3,
-      name: "African Hunting Dog",
-      bred_for: "A wild pack animal",
-      life_span: "11 years",
-      temperament: "Wild, Hardworking, Dutiful",
-      origin: "",
-      reference_image_id: "rkiByec47",
-      image: {
-        id: "rkiByec47",
-        width: 500,
-        height: 335,
-        url: "https://cdn2.thedogapi.com/images/rkiByec47.jpg",
-      },
-    },
-    {
-      weight: {
-        imperial: "40 - 65",
-        metric: "18 - 29",
-      },
-      height: {
-        imperial: "21 - 23",
-        metric: "53 - 58",
-      },
-      id: 4,
-      name: "Airedale Terrier",
-      bred_for: "Badger, otter hunting",
-      breed_group: "Terrier",
-      life_span: "10 - 13 years",
-      temperament:
-        "Outgoing, Friendly, Alert, Confident, Intelligent, Courageous",
-      origin: "United Kingdom, England",
-      reference_image_id: "1-7cgoZSh",
-      image: {
-        id: "1-7cgoZSh",
-        width: 645,
-        height: 430,
-        url: "https://cdn2.thedogapi.com/images/1-7cgoZSh.jpg",
-      },
-    },
   ];
 
   constructor() {
     super();
-    console.log("hello i am the constructor from news element ");
     this.state = {
       articles: this.articles,
-      load: false,
+      load:false
     };
   }
 
- async componentDidMount() { 
-    let url="https://api.thedogapi.com/v1/breeds?limit=1&page=1&order=Descx-api-key=e68c0c3f-806c-4077-acf2-d66e1f9c3ffd";
-    let data= await fetch(url);
-    let parsedData= await data.json();
-    console.log(parsedData);
-    await this.setState({articles:parsedData.articles})
+  async componentDidMount() {
+    let url = "https://api.thedogapi.com/v1/breeds";
+    let data = await fetch(url);
+    let parsedData = await data.json();
+    // console.log(parsedData);
+    this.setState({ articles: parsedData});
   }
-
-
 
   render() {
     return (
@@ -129,10 +53,9 @@ export class BodyFrame extends Component {
 
         <div className="row">
           {this.state.articles.map((element) => {
-
             return (
-              <div className="col-md-3" key= {element.id}>
-                <BodyItem  
+              <div className="col-md-3" key={element.id}>
+                <BodyItem
                   name={element.name}
                   height={element.height.metric}
                   weight={element.weight.metric}
