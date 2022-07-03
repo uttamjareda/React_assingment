@@ -15,25 +15,47 @@ export class BodyFrame extends Component {
   }
 
   async componentDidMount() {
-    let url = `https://api.thedogapi.com/v1/breeds?limit=12&page=4`;
+    let url = `https://api.thedogapi.com/v1/breeds?limit=12&page=0&order=Asc`;
     let data = await fetch(url);
     let parsedData = await data.json();
     this.setState({ articles: parsedData });
   }
 
+
+
+
    handleNextClick = async () => {
     console.log("Next Clicked");
+    let url = `https://api.thedogapi.com/v1/breeds?limit=12&page=${this.state.page+1}&order=Asc`;
+    let data = await fetch(url);
+    let parsedData = await data.json();
     this.setState(
         {
-            page:this.page+1
+            page:this.state.page+1,
+            articles: parsedData
         }
     )
-    console.log(this.page)
   };
+
+
+
 
   handlePrevClick = async () => {
     console.log("Prev Clicked");
+    let url = `https://api.thedogapi.com/v1/breeds?limit=12&page=${this.state.page-1}&order=Asc`;
+    let data = await fetch(url);
+    let parsedData = await data.json();
+    this.setState(
+        {
+            page:this.state.page-1,
+            articles: parsedData
+        }
+    )
   };
+
+
+
+
 
   render() {
     return (
