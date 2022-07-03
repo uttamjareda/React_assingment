@@ -17,11 +17,11 @@ export class BodyItem extends Component {
             <h5 className="card-title">{name}</h5>
             
             <h6 className="card-text">
-              Bred Group: {bredGroup} <br />
+              Bred Group: {bredGroup?bredGroup:"Data Unvailable"} <br />
               Height: {height} Cm  <br />
               Weight: {weight} Kg<br />
               Life Span: {lifeSpan} <br />
-              Origin: {origin}
+              Origin: {origin?origin:"Data Unvailable"}
             </h6>
             {/* <a href="/" className="btn btn-sm btn-primary">
               Read more

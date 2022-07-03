@@ -2,50 +2,38 @@ import React, { Component } from "react";
 import BodyItem from "./BodyItem";
 
 export class BodyFrame extends Component {
-  articles = [
-    {
-      weight: {
-        imperial: "6 - 13",
-        metric: "3 - 6",
-      },
-      height: {
-        imperial: "9 - 11.5",
-        metric: "23 - 29",
-      },
-      id: 1,
-      name: "Affenpinscher",
-      bred_for: "Small rodent hunting, lapdog",
-      breed_group: "Toy",
-      life_span: "10 - 12 years",
-      temperament:
-        "Stubborn, Curious, Playful, Adventurous, Active, Fun-loving",
-      origin: "Germany, France",
-      reference_image_id: "BJa4kxc4X",
-      image: {
-        id: "BJa4kxc4X",
-        width: 1600,
-        height: 1199,
-        url: "https://cdn2.thedogapi.com/images/BJa4kxc4X.jpg",
-      },
-    },
-  ];
-
+  //   articles = [];
+// we have total 264 results, so limit=12 then 22 pages
   constructor() {
     super();
     this.state = {
-      articles: this.articles,
-      load:false
+      articles: [],
+      load: false,
+      page: 0,
+      limit: 12,
     };
   }
 
   async componentDidMount() {
-    let url = "https://api.thedogapi.com/v1/breeds";
+    let url = `https://api.thedogapi.com/v1/breeds?limit=12&page=4`;
     let data = await fetch(url);
     let parsedData = await data.json();
-    // console.log(parsedData);
-    // bhai ye setstate me sahi se set kiya karo yrr abhi to dimag kharab ho gya tha bahut hi jyada samaj hi nahi aa rha tha kuch sahi bta rha hu 5-6 ghante laga diye the 
-    this.setState({ articles: parsedData});
+    this.setState({ articles: parsedData });
   }
+
+   handleNextClick = async () => {
+    console.log("Next Clicked");
+    this.setState(
+        {
+            page:this.page+1
+        }
+    )
+    console.log(this.page)
+  };
+
+  handlePrevClick = async () => {
+    console.log("Prev Clicked");
+  };
 
   render() {
     return (
@@ -68,6 +56,23 @@ export class BodyFrame extends Component {
               </div>
             );
           })}
+        </div>
+        <div className="container d-flex justify-content-between">
+          <button
+            disabled={this.state.page<=0}
+            type="button"
+            className="btn btn-dark"
+            onClick={this.handlePrevClick}
+          >
+            &larr; Previous
+          </button>
+          <button
+            type="button"
+            className="btn btn-dark"
+            onClick={this.handleNextClick}
+          >
+            Next &rarr;
+          </button>
         </div>
       </div>
     );
