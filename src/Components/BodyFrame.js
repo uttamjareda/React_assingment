@@ -43,6 +43,7 @@ export class BodyFrame extends Component {
     let data = await fetch(url);
     let parsedData = await data.json();
     // console.log(parsedData);
+    // bhai ye setstate me sahi se set kiya karo yrr abhi to dimag kharab ho gya tha bahut hi jyada samaj hi nahi aa rha tha kuch sahi bta rha hu 5-6 ghante laga diye the 
     this.setState({ articles: parsedData});
   }
 
