@@ -25,7 +25,6 @@ export class BodyFrame extends Component {
   }
 
 
-//   {this.state.load && <Spinner/>}
 
    handleNextClick = async () => {
     console.log("Next Clicked");
@@ -60,50 +59,38 @@ export class BodyFrame extends Component {
     )
   };
 
-
-
-
-
   render() {
     return (
-      <div className="container my-10 ">
-        <h2 className="text-center my-3">Welcome to WoofWoof</h2>
-        {this.state.load && <Spinner/>}
-        <div className="row">
-          {!this.state.load && this.state.articles.map((element) => {
-            return (
-              <div className="col-md-3" key={element.id}>
-                <BodyItem
-                  name={element.name}
-                  height={element.height.metric}
-                  weight={element.weight.metric}
-                  lifeSpan={element.life_span}
-                  bredGroup={element.breed_group}
-                  origin={element.origin}
-                  ImageUrl={element.image.url}
-                />
-              </div>
-            );
-          })}
+        
+        <div>
+            <h2 className="text-center welcometext" style={{padding: "1rem"}}>Welcome to WoofWoof</h2>
+            {this.state.load && <Spinner/>}
+
+            <div className="container bodyframe">
+                {!this.state.load && this.state.articles.map((element) => {
+                return (
+                    <div className="container col" style={{padding: "1rem"}} key={element.id}>
+                        <BodyItem
+                        name={element.name}
+                        height={element.height.metric}
+                        weight={element.weight.metric}
+                        lifeSpan={element.life_span}
+                        bredGroup={element.breed_group}
+                        origin={element.origin}
+                        ImageUrl={element.image.url}
+                        />
+                    </div>
+                );
+                })}
+
+            </div>
+
+        <div className="container d-flex justify-content-between my-3">
+            <button disabled={this.state.page<=0} type="button" onClick={this.handlePrevClick}>&larr; Prev</button>
+            <button type="button" onClick={this.handleNextClick}>Next &rarr;</button>
+          </div>
+
         </div>
-        <div className="container d-flex justify-content-between">
-          <button
-            disabled={this.state.page<=0}
-            type="button"
-            className="btn btn-dark"
-            onClick={this.handlePrevClick}
-          >
-            &larr; Previous
-          </button>
-          <button
-            type="button"
-            className="btn btn-dark"
-            onClick={this.handleNextClick}
-          >
-            Next &rarr;
-          </button>
-        </div>
-      </div>
     );
   }
 }

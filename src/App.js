@@ -4,10 +4,12 @@ import BodyFrame from "./Components/BodyFrame";
 import NavBar from "./Components/NavBar";
 
 
+
 function App() {
   return (
-    <div className="App">
+    <div>
       <NavBar/>
+      {/* you can change number of results per page using limit parameter */}
       <BodyFrame limit={8}/>
     </div>
   );

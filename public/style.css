@@ -1,0 +1,88 @@
+*{margin: 0; padding: 0;}
+
+/* header css */
+header{
+    color: white;
+    background-color: black;
+}
+
+ header a{
+    color:white;
+    background: black;
+    display:inline-block; 
+    padding:0px 25px; 
+    height:60px;
+    line-height:60px; 
+    text-align:center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Roboto Slab', serif; 
+    text-decoration:none;
+    text-transform: capitalize; 
+    letter-spacing:2px; 
+    font-weight:700;
+}  
+
+header ul{
+    float:right;
+    padding: 0;
+    margin: 0;
+} 
+
+header ul li{
+    display: inline;
+    float:left;
+}
+
+.bodyitem{
+    padding: 1rem;
+}
+/* body css */
+.container {
+    padding: 2px 16px;
+    justify-content: center;
+  }
+
+  .card {
+    /* width: 100%; */
+    border: solid black 1px;
+    padding: 3px;
+  }
+
+.bodyframe{
+    display: flex;
+    flex-wrap: wrap;
+    justify-items: center;
+}
+
+.d-flex{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: center;
+}
+
+/* card css */
+.card-img {
+    width: 100%;
+    height: 15vw;
+    object-fit: fill;
+}
+
+.my-3{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+
+.card-text{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Roboto Slab', serif; 
+}
+/* other classes css */
+.text-center{
+    text-align: center;
+}
+
+.justify-content-between{
+    justify-content: space-between;
+}
