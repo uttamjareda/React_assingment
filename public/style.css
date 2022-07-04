@@ -84,5 +84,25 @@ header ul li{
 }
 
 .justify-content-between{
-    justify-content: space-between;
+    justify-content: space-evenly;
+}
+
+.btn{
+    color: white;
+    background: black;
+    padding: 8px 10px;
+    cursor: pointer;
+    text-align: center;
+    font-weight: 400;
+    border-radius: 6px;
+}
+
+.btn:disabled{
+    color: white;
+    background: rgb(101, 101, 101);
+    padding: 8px 10px;
+    cursor: pointer;
+    text-align: center;
+    font-weight: 400;
+    border-radius: 6px;
 }
