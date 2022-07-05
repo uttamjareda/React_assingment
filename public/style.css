@@ -33,6 +33,10 @@ header ul li{
     float:left;
 }
 
+@media (max-width:500px){
+    
+}
+
 .bodyitem{
     padding: 1rem;
 }
