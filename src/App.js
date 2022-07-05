@@ -9,8 +9,9 @@ function App() {
   return (
     <div>
       <NavBar/>
-      {/* you can change number of results per page using limit parameter */}
-      <BodyFrame limit={8}/>
+
+      {/* you can change number of results per page using limit parameter and oder using asc and desc */}
+      <BodyFrame limit={8} order="asc"/>
     </div>
   );
 }
